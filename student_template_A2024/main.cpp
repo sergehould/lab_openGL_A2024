@@ -25,7 +25,7 @@ void render(void) {
 	x_y_z_draw(1, 0.02);
 	glPrintf(0, -1, 0, "Good %s","day");
 	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, red);
-	glutSolidSphere(0.25f, 60, 60); // 
+	glutSolidSphere(0.1f, 60, 60); // 
 	glutSwapBuffers();
 }
 
