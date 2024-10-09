@@ -19,7 +19,7 @@ float mapf(float x, float in_min, float in_max, float out_min, float out_max) {
 
 #ifdef	OPENGL_PROJECT
 /* Prints at position x,y,z */
-void glPrintf(int x, int y, int z, const char* format, ...) {
+void glPrintf(double x, double y, double z, const char* format, ...) {
 	char buf[512];
 	va_list vl;
 	va_start(vl, format);
