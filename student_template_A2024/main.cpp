@@ -21,11 +21,11 @@
 void render(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	glTranslatef(0, 0, -2);
-	x_y_z_draw(1, 0.02);
-	glPrintf(0, -1, 0, "Good %s","day");
+	glTranslatef(0, 0, -16);
+	x_y_z_draw(8, 0.2);
+	glPrintf(0, -4, 0, "It %s","works!");
 	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, red);
-	glutSolidSphere(0.1f, 60, 60); // 
+	glutSolidSphere(1.0f, 60, 60); // 
 	glutSwapBuffers();
 }
 
