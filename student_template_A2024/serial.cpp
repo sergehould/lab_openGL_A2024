@@ -234,8 +234,12 @@ int16_t get_int16() {
 }
 
 char get_byte() {
-    return serial_read();
+    //return serial_read();
+    char rx= serial_read();
+    PurgeComm(port, PURGE_RXCLEAR); // clears rx buffer 
+    return rx;
 }
+
 
 void put_int16(int16_t data) {
     uint8_t buff[1];
