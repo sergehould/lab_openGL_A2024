@@ -14,7 +14,7 @@ void serial_close(void);
 int16_t rec_one_int16_b();
 void put_int16(int16_t data);
 int16_t get_int16();
-char get_byte();
+char get_byte(int);
 void put_byte(char tx);
 
 
