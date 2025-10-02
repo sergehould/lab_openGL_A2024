@@ -30,23 +30,18 @@ void render(void) {
 	glutSwapBuffers();
 }
 
-// Callback function normal keyboard keys
-void n_keys(unsigned char key,int x, int y)
-{ 
 
-}
-
-// Callback function special keyboard keys
-void s_keys(int key, int x, int y) {
-
-}
 
 int main(int argc, char **argv) {
-	serial_init(); // initializes the serial port
+	// initializes the serial port
+	int status = 0;
+	#ifndef		SIMULATION
+		status = serial_init();
+	#endif
 	tick_init();
 	/* Initializes openGL specifying screen size, screen position, render 
 		callback, normal keys callback and special keys callback  */
-	open_gl_init(640, 640, 10, 10,render, n_keys, s_keys,  argc, argv);
+	open_gl_init(640, 640, 10, 10,render,  argc, argv);
 }
 
 
