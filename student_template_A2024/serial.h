@@ -3,6 +3,8 @@
 #include <stdint.h>
 
 #define PORT    COM5
+#define	PURGE		1
+#define	NO_PURGE	2
 //#define	get_byte	rec_one_int8_nb
 int test(void);
 int serial_init(void);

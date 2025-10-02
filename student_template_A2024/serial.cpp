@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <conio.h>
+#include "serial.h"
 #include "configuration.h"
 
 //using namespace std;

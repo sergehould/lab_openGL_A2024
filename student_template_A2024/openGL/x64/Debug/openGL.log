@@ -1,3 +1,46 @@
 ﻿  main.cpp
-C:\Users\houlds\Documents\tempo\lab_openGL_A2024\student_template_A2024\opengl_init.h(9,61): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-  openGL.vcxproj -> C:\Users\houlds\Documents\tempo\lab_openGL_A2024\student_template_A2024\x64\Debug\openGL.exe
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.h(9,27): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+  (compiling source file '../main.cpp')
+  
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.h(9,37): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+  (compiling source file '../main.cpp')
+  
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.h(9,47): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+  (compiling source file '../main.cpp')
+  
+  opengl_init.cpp
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.h(9,27): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+  (compiling source file '../opengl_init.cpp')
+  
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.h(9,37): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+  (compiling source file '../opengl_init.cpp')
+  
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.h(9,47): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+  (compiling source file '../opengl_init.cpp')
+  
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.cpp(54,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.cpp(100,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.cpp(103,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.cpp(108,28): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.cpp(108,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.cpp(114,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.cpp(117,21): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.cpp(121,31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.cpp(121,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.cpp(127,13): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.cpp(130,15): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.cpp(136,34): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\opengl_init.cpp(136,18): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  serial.cpp
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\serial.cpp(145,44): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\serial.cpp(253,43): warning C4838: conversion from 'int' to 'uint8_t' requires a narrowing conversion
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\serial.cpp(253,56): warning C4838: conversion from 'int' to 'uint8_t' requires a narrowing conversion
+  tick.cpp
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\tick.cpp(16,11): warning C4244: '=': conversion from 'LONGLONG' to 'long', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\tick.cpp(27,25): warning C4244: '=': conversion from 'LONGLONG' to 'uint32_t', possible loss of data
+  util.cpp
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\util.cpp(28,22): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\util.cpp(28,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\util.cpp(28,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  Generating Code...
+  openGL.vcxproj -> C:\Users\houlds\310\lab_openGL_A2024\student_template_A2024\x64\Debug\openGL.exe
