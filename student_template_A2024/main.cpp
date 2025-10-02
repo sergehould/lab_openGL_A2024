@@ -15,6 +15,7 @@
 #include "tick.h"
 #include "util.h"
 #include "opengl_init.h"
+#include "configuration.h"
 
 
 // Callback function for rendering a scene
