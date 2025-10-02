@@ -10,5 +10,5 @@ static GLfloat grey[] = { 0.752941, 0.752941, 0.752941, 1.0 };
 //static GLfloat orange[] = { 0.89, 0.47, 0.20, 1.0 };
 static GLfloat orange[] = { 1.0, 0.50, 0.0, 1.0 };
 void changeSize(int w, int h);
-void open_gl_init(int w, int h, int x, int y, void (*callback1)(), void (*callback2)(unsigned char a, int b, int c), void (*callback3)(int a, int b, int c), int argc, char** argv);
+void open_gl_init(int w, int h, int x, int y, void (*callback1)(), int argc, char** argv);
 void x_y_z_draw(double l, double d);
