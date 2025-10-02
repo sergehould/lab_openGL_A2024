@@ -1,7 +1,54 @@
 #include "freeglut/include/GL/glut.h"
 #include "freeglut/include/GL/freeglut.h"
 #include "opengl_init.h"
+#include "configuration.h"
+#include <stdio.h>
+int tics = 0;
+#ifdef SIMULATION
+/* Function that sends one byte to the serial port */
+void put_byte(char tx) {
+	printf("\n%d", tx);
 
+}
+#endif
+
+#ifdef SIMULATION
+/* Function that sends one byte to the serial port */
+char get_byte(int mode) {
+
+	return tics;
+}
+#endif
+void n_keys(unsigned char key, int x, int y)
+{
+	if (key == 'q') {
+
+	}
+	if (key == 'a') {
+
+	}
+}
+
+void s_keys(int key, int x, int y) {
+	if (key == GLUT_KEY_UP) {
+
+	}
+	if (key == GLUT_KEY_DOWN) {
+
+	}
+	if (key == GLUT_KEY_LEFT) {
+		tics++;
+	}
+	if (key == GLUT_KEY_RIGHT) {
+		tics--;
+	}
+	if (key == GLUT_KEY_F1) {
+
+	}
+	if (key == GLUT_KEY_F2) {
+
+	}
+}
 void changeSize(int w, int h)
 {
 	float ratio = w * 1.0 / h;
@@ -25,7 +72,7 @@ void init2() {
 	glEnable(GL_LIGHT0);
 }
 
-void open_gl_init(int w, int h, int x, int y, void (*callback1)() , void (*callback2)(unsigned char a, int b, int c), void (*callback3)(int a, int b, int c), int argc, char** argv) {
+void open_gl_init(int w, int h, int x, int y, void (*callback1)(), int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(x, y);
@@ -35,12 +82,13 @@ void open_gl_init(int w, int h, int x, int y, void (*callback1)() , void (*callb
 	glutReshapeFunc(changeSize);
 	glutIdleFunc(callback1);
 	glutDisplayFunc(callback1);
-	glutKeyboardFunc(callback2);
-	glutSpecialFunc(callback3);
+	glutKeyboardFunc(n_keys);
+	glutSpecialFunc(s_keys);
 	init2();
 	glutMainLoop();
 
 }
+
 
 /* Draws the z-y-z axis */
 void x_y_z_draw(double l, double d) {
