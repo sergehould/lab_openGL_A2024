@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <conio.h>
-
+#include "configuration.h"
 
 //using namespace std;
 #pragma warning(disable : 4996)
@@ -66,9 +66,11 @@ int serial_init(void) {
     // Configure read and write operations to time out after 100 ms.
     COMMTIMEOUTS timeouts = { 0 };
     timeouts.ReadIntervalTimeout = 0;
-    timeouts.ReadTotalTimeoutConstant = 100;
+    //timeouts.ReadTotalTimeoutConstant = 100; 
+    timeouts.ReadTotalTimeoutConstant = 0;
     timeouts.ReadTotalTimeoutMultiplier = 0;
-    timeouts.WriteTotalTimeoutConstant = 100;
+    //timeouts.WriteTotalTimeoutConstant = 100;
+    timeouts.WriteTotalTimeoutConstant = 0;
     timeouts.WriteTotalTimeoutMultiplier = 0;
 
     success = SetCommTimeouts(port, &timeouts);
@@ -100,38 +102,40 @@ int serial_init(void) {
 /* non-blocking. Returns last value if no recption*/
 char serial_read(void)
 {
-    static unsigned char last = 0;
-    int ch = 0;
-    fflush(stdin);
-    //if (kbhit()) {//Check whether there is data in the buffer
-    //    ch = getch();//Read the data in the buffer in the form of characters
-    //}
-    status = ReadFile(port, readBuf, 1, &nb_bytes, NULL); // non-blocking
-    //if (nb_bytes == 0) return 0xff; //empty
-    if (nb_bytes == 0)
-    {
-        return last; //empty
-    }
-    else {
-        last = readBuf[0];
-        return last;
-    }
+        static unsigned char last = 0;
+        int ch = 0;
+        fflush(stdin);
+        //if (kbhit()) {//Check whether there is data in the buffer
+        //    ch = getch();//Read the data in the buffer in the form of characters
+        //}
+        status = ReadFile(port, readBuf, 1, &nb_bytes, NULL); // non-blocking
+        //if (nb_bytes == 0) return 0xff; //empty
+        //PurgeComm(port, PURGE_RXCLEAR);
+        if (nb_bytes == 0)
+        {
+            return last; //empty
+        }
+        else { 
+            last = readBuf[0];
+            return last;
+        }
 }
 
 void serial_close(void) {
     CloseHandle(port);
 }
-
+#ifndef SIMULATION
 /* Function that sends one byte to the serial port */
 void put_byte(char tx) {
     uint8_t buff[1];
     static int cnt = 0;
     buff[0] = tx;
     //if (cnt++ == 10) {
-    write_port(port, buff, 1);
-    cnt = 0;
+        write_port(port, buff, 1);
+        cnt = 0;
     //}
 }
+#endif
 
 // Writes bytes to the serial port, returning 0 on success and -1 on failure.
 static int write_port(HANDLE port, uint8_t* buffer, size_t size)
@@ -166,15 +170,15 @@ static void print_error(const char* context)
 
 
 /*
- Blocking polling function that receives two bytes
- from the serial port and merge them as an int16
+ Blocking polling function that receives two bytes 
+ from the serial port and merge them as an int16 
  using a start byte, a stop byte and checksum byte.
  Returns the received character if no error.
  Returns -1 if there is an error.
 */
 
-#define START_BYTE 0x7E
-#define STOP_BYTE 0x7F
+#define START_BYTE 0x7E  // 126
+#define STOP_BYTE 0x7F  //127
 int16_t rec_one_int16_b() {
     uint8_t byte;
     uint8_t start_byte = START_BYTE;
@@ -190,7 +194,7 @@ int16_t rec_one_int16_b() {
         data_bytes[i] = serial_read();
         checksum += data_bytes[i];
     }
-    byte = serial_read();
+    byte= serial_read();
     if (byte != checksum) {
         // Checksum error
         return -1;
@@ -203,7 +207,7 @@ int16_t rec_one_int16_b() {
     return (data_bytes[0] << 8) | data_bytes[1];
 }
 
-int16_t get_int16() {
+int16_t get_int16(int p) {
     uint8_t byte;
     uint8_t start_byte = START_BYTE;
     uint8_t stop_byte = STOP_BYTE;
@@ -230,17 +234,17 @@ int16_t get_int16() {
         return last;
     }
     last = (data_bytes[0] << 8) | data_bytes[1];
+    if(p== PURGE) PurgeComm(port, PURGE_RXCLEAR); // clears rx buffer 
     return last;
 }
-
-char get_byte() {
+#ifndef SIMULATION
+char get_byte(int p) {
     //return serial_read();
     char rx= serial_read();
-    PurgeComm(port, PURGE_RXCLEAR); // clears rx buffer 
+    if(p == PURGE) PurgeComm(port, PURGE_RXCLEAR); // clears rx buffer 
     return rx;
 }
-
-
+#endif
 void put_int16(int16_t data) {
     uint8_t buff[1];
     uint8_t start_byte = START_BYTE;
@@ -249,15 +253,22 @@ void put_int16(int16_t data) {
     uint8_t checksum = start_byte + stop_byte + data_bytes[0] + data_bytes[1];
 
     buff[0] = start_byte;
-    write_port(port, buff, 1);
+    put_byte(start_byte);
+    //write_port(port, buff, 1);
     buff[0] = data_bytes[0];
-    write_port(port, buff, 1);
+    put_byte(data & 0xFF);
+    //write_port(port, buff, 1);
     buff[0] = data_bytes[1];
-    write_port(port, buff, 1);
+    put_byte((data >> 8) & 0xFF);
+    //write_port(port, buff, 1);
     buff[0] = checksum;
-    write_port(port, buff, 1);
+    put_byte(checksum);
+    //write_port(port, buff, 1);
     buff[0] = stop_byte;
-    write_port(port, buff, 1);
+    put_byte(stop_byte);
+    //write_port(port, buff, 1);
+
+
 
 
     //UART2_Write(start_byte);
